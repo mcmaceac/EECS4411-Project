@@ -1,0 +1,74 @@
+DB2 Universal Database Version 11.1, 5622-044 (c) Copyright IBM Corp. 1991, 2015
+Licensed Material - Program Property of IBM
+IBM DB2 Universal Database SQL and XQUERY Explain Tool
+
+******************** DYNAMIC ***************************************
+
+==================== STATEMENT ==========================================
+
+	Isolation Level          = Cursor Stability
+	Blocking                 = Block All Cursors
+	Query Optimization Class = 5
+
+	Partition Parallel       = No
+	Intra-Partition Parallel = No
+
+	SQL Path                 = "SYSIBM", "SYSFUN", "SYSPROC", "SYSIBMADM", 
+                                   "MCMACEAC"
+
+
+Statement:
+  
+  select stl.customer.cust#, country, stl.book.book#, qnty 
+  from stl.customer, stl.book, stl.purchase 
+  where stl.book.book# =stl.purchase.book# and stl.customer.cust# =
+          stl.purchase.cust#
+
+
+Section Code Page = 1208
+
+Estimated Cost = 71497.515625
+Estimated Cardinality = 9997850.000000
+
+Access Table Name = STL.CUSTOMER  ID = 2,4
+|  #Columns = 2
+|  Skip Inserted Rows
+|  Avoid Locking Committed Data
+|  Currently Committed for Cursor Stability
+|  May participate in Scan Sharing structures
+|  Scan may start anywhere and wrap, for completion
+|  Fast scan, for purposes of scan sharing management
+|  Scan can be throttled in scan sharing management
+|  Relation Scan
+|  |  Prefetch: Eligible
+|  Lock Intents
+|  |  Table: Intent Share
+|  |  Row  : Next Key Share
+|  Sargable Predicate(s)
+|  |  Process Build Table for Hash Join
+Hash Join
+|  Early Out: Single Match Per Outer Row
+|  Estimated Build Size: 4832000
+|  Estimated Probe Size: 281136000
+|  Access Table Name = STL.PURCHASE  ID = 2,6
+|  |  #Columns = 3
+|  |  Skip Inserted Rows
+|  |  Avoid Locking Committed Data
+|  |  Currently Committed for Cursor Stability
+|  |  May participate in Scan Sharing structures
+|  |  Scan may start anywhere and wrap, for completion
+|  |  Fast scan, for purposes of scan sharing management
+|  |  Scan can be throttled in scan sharing management
+|  |  Relation Scan
+|  |  |  Prefetch: Eligible
+|  |  Lock Intents
+|  |  |  Table: Intent Share
+|  |  |  Row  : Next Key Share
+|  |  Sargable Predicate(s)
+|  |  |  Process Probe Table for Hash Join
+Return Data to Application
+|  #Columns = 4
+
+End of section
+
+
