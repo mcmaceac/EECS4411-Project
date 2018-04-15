@@ -1,0 +1,61 @@
+DB2 Universal Database Version 11.1, 5622-044 (c) Copyright IBM Corp. 1991, 2015
+Licensed Material - Program Property of IBM
+IBM DB2 Universal Database SQL and XQUERY Explain Tool
+
+******************** DYNAMIC ***************************************
+
+==================== STATEMENT ==========================================
+
+	Isolation Level          = Cursor Stability
+	Blocking                 = Block All Cursors
+	Query Optimization Class = 5
+
+	Partition Parallel       = No
+	Intra-Partition Parallel = No
+
+	SQL Path                 = "SYSIBM", "SYSFUN", "SYSPROC", "SYSIBMADM", 
+                                   "MCMACEAC"
+
+
+Statement:
+  
+  select b.genre, max(b.price)
+  from stl.book b 
+  where b.genre='Education' 
+  group by b.genre 
+  order by b.genre
+
+
+Section Code Page = 1208
+
+Estimated Cost = 646.785095
+Estimated Cardinality = 1.000000
+
+Access Table Name = STL.BOOK  ID = 2,5
+|  #Columns = 2
+|  Skip Inserted Rows
+|  Avoid Locking Committed Data
+|  Currently Committed for Cursor Stability
+|  May participate in Scan Sharing structures
+|  Scan may start anywhere and wrap, for completion
+|  Fast scan, for purposes of scan sharing management
+|  Scan can be throttled in scan sharing management
+|  Relation Scan
+|  |  Prefetch: 1 Pages
+|  Lock Intents
+|  |  Table: Intent Share
+|  |  Row  : Next Key Share
+|  Sargable Predicate(s)
+|  |  #Predicates = 1
+|  |  Predicate Aggregation
+|  |  |  Group By
+|  |  |  Column Function(s)
+Aggregation Completion
+|  Group By
+|  Column Function(s)
+Return Data to Application
+|  #Columns = 2
+
+End of section
+
+
