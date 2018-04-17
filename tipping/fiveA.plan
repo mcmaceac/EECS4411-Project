@@ -1,0 +1,101 @@
+DB2 Universal Database Version 11.1, 5622-044 (c) Copyright IBM Corp. 1991, 2015
+Licensed Material - Program Property of IBM
+IBM DB2 Universal Database SQL and XQUERY Explain Tool
+
+******************** DYNAMIC ***************************************
+
+==================== STATEMENT ==========================================
+
+	Isolation Level          = Cursor Stability
+	Blocking                 = Block All Cursors
+	Query Optimization Class = 5
+
+	Partition Parallel       = No
+	Intra-Partition Parallel = No
+
+	SQL Path                 = "SYSIBM", "SYSFUN", "SYSPROC", "SYSIBMADM", 
+                                   "MJCAR"
+
+
+Statement:
+  
+  select * 
+  from stl.purchase p, stl.book b 
+  where b.book# =p.book# and p.when between '10/01/2003' and 
+          '10/31/2003' 
+
+
+Section Code Page = 1208
+
+Estimated Cost = 44110.875000
+Estimated Cardinality = 163566.171875
+
+Access Table Name = STL.BOOK  ID = 2,5
+|  #Columns = 5
+|  Skip Inserted Rows
+|  Avoid Locking Committed Data
+|  Currently Committed for Cursor Stability
+|  May participate in Scan Sharing structures
+|  Scan may start anywhere and wrap, for completion
+|  Fast scan, for purposes of scan sharing management
+|  Scan can be throttled in scan sharing management
+|  Relation Scan
+|  |  Prefetch: Eligible
+|  Lock Intents
+|  |  Table: Intent Share
+|  |  Row  : Next Key Share
+|  Sargable Predicate(s)
+|  |  Process Build Table for Hash Join
+Hash Join
+|  Early Out: Single Match Per Outer Row
+|  Estimated Build Size: 3840000
+|  Estimated Probe Size: 6576000
+|  Access Table Name = STL.PURCHASE  ID = 2,6
+|  |  Index Scan:  Name = STL.PURCHASE_WHEN_INDEX  ID = 3
+|  |  |  Regular Index (Not Clustered)
+|  |  |  Index Columns:
+|  |  |  |  1: WHEN (Ascending)
+|  |  #Columns = 0
+|  |  Skip Inserted Rows
+|  |  Avoid Locking Committed Data
+|  |  Currently Committed for Cursor Stability
+|  |  #Key Columns = 1
+|  |  |  Start Key: Inclusive Value
+|  |  |  |  1: 2003-10-01 
+|  |  |  Stop Key: Inclusive Value
+|  |  |  |  1: 2003-10-31 
+|  |  Index-Only Access
+|  |  Index Prefetch: Sequential(367), Readahead
+|  |  Isolation Level: Uncommitted Read
+|  |  Lock Intents
+|  |  |  Table: Intent None
+|  |  |  Row  : None
+|  |  Sargable Index Predicate(s)
+|  |  |  Insert Into Integer Sorted Temp Table  ID = t1
+|  |  |  |  #Columns = 1
+|  |  |  |  #Sort Key Columns = 1
+|  |  |  |  |  Key 1: (Ascending)
+|  |  |  |  Sortheap Allocation Parameters:
+|  |  |  |  |  #Rows     = 163567.000000
+|  |  |  |  |  Row Width = 20
+|  |  |  |  Duplicate Elimination
+|  Integer Sorted Temp Table Completion  ID = t1
+|  List Prefetch Preparation
+|  |  Access Table Name = STL.PURCHASE  ID = 2,6
+|  |  |  #Columns = 5
+|  |  |  Skip Inserted Rows
+|  |  |  Avoid Locking Committed Data
+|  |  |  Currently Committed for Cursor Stability
+|  |  |  RID List Fetch Scan
+|  |  |  Fetch Using Prefetched List
+|  |  |  |  Prefetch: 43143 Pages
+|  |  |  Lock Intents
+|  |  |  |  Table: Intent Share
+|  |  |  |  Row  : Next Key Share
+|  |  |  Sargable Predicate(s)
+|  |  |  |  #Predicates = 2
+|  |  |  |  Process Probe Table for Hash Join
+Return Data to Application
+|  #Columns = 10
+
+End of section
