@@ -20,31 +20,59 @@ IBM DB2 Universal Database SQL and XQUERY Explain Tool
 Statement:
   
   select avg(sale)
-  from stl.purchase p, stl.book b 
-  where b.book# =p.book# and p.qnty > 100 
-  group by genre
+  from stl.purchase p, stl.book b, stl.customer c 
+  where b.book# =p.book# and c.cust# =p.cust# and p.when > 
+          '01/01/2010' 
+  group by city, genre
 
 
 Section Code Page = 1208
 
-Estimated Cost = 70982.835938
+Estimated Cost = 47.419216
 Estimated Cardinality = 1.000000
 
 Access Table Name = STL.PURCHASE  ID = 2,6
-|  #Columns = 2
+|  Index Scan:  Name = STL.PURCHASE_WHEN_INDEX  ID = 3
+|  |  Regular Index (Not Clustered)
+|  |  Index Columns:
+|  |  |  1: WHEN (Ascending)
+|  #Columns = 3
 |  Skip Inserted Rows
 |  Avoid Locking Committed Data
 |  Currently Committed for Cursor Stability
-|  May participate in Scan Sharing structures
-|  Scan may start anywhere and wrap, for completion
-|  Scan can be throttled in scan sharing management
-|  Relation Scan
-|  |  Prefetch: Eligible
+|  Evaluate Predicates Before Locking for Key
+|  #Key Columns = 1
+|  |  Start Key: Exclusive Value
+|  |  |  1: 2010-01-01 
+|  |  Stop Key: End of Index
+|  Data Prefetch: Sequential(1), Readahead
+|  Index Prefetch: Sequential(1), Readahead
 |  Lock Intents
 |  |  Table: Intent Share
 |  |  Row  : Next Key Share
-|  Sargable Predicate(s)
-|  |  #Predicates = 1
+Nested Loop Join
+|  Access Table Name = STL.CUSTOMER  ID = 2,4
+|  |  Index Scan:  Name = STL.CUSTOMER_PK  ID = 1
+|  |  |  Regular Index (Not Clustered)
+|  |  |  Index Columns:
+|  |  |  |  1: CUST# (Ascending)
+|  |  #Columns = 1
+|  |  Single Record
+|  |  Fully Qualified Unique Key
+|  |  Skip Inserted Rows
+|  |  Avoid Locking Committed Data
+|  |  Currently Committed for Cursor Stability
+|  |  Evaluate Predicates Before Locking for Key
+|  |  #Key Columns = 1
+|  |  |  Start Key: Inclusive Value
+|  |  |  |  1: ? 
+|  |  |  Stop Key: Inclusive Value
+|  |  |  |  1: ? 
+|  |  Data Prefetch: None
+|  |  Index Prefetch: Sequential(1), Readahead
+|  |  Lock Intents
+|  |  |  Table: Intent Share
+|  |  |  Row  : Next Key Share
 Nested Loop Join
 |  Access Table Name = STL.BOOK  ID = 2,5
 |  |  Index Scan:  Name = STL.BOOK_PK  ID = 1
@@ -69,15 +97,16 @@ Nested Loop Join
 |  |  |  Table: Intent Share
 |  |  |  Row  : Next Key Share
 Insert Into Sorted Temp Table  ID = t1
-|  #Columns = 2
-|  #Sort Key Columns = 1
-|  |  Key 1: GENRE (Ascending)
+|  #Columns = 3
+|  #Sort Key Columns = 2
+|  |  Key 1: CITY (Ascending)
+|  |  Key 2: GENRE (Ascending)
 |  Sortheap Allocation Parameters:
 |  |  #Rows     = 1.000000
-|  |  Row Width = 24
+|  |  Row Width = 36
 |  Piped
 Access Temp Table  ID = t1
-|  #Columns = 2
+|  #Columns = 3
 |  Relation Scan
 |  |  Prefetch: Eligible
 |  Sargable Predicate(s)
