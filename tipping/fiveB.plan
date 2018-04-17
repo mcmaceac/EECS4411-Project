@@ -43,5 +43,13 @@ Access Table Name = STL.CUSTOMER  ID = 2,4
 |  |  Prefetch: Eligible
 |  Lock Intents
 |  |  Table: Intent Share
+|  |  Row  : Next Key Share
+|  Sargable Predicate(s)
+|  |  #Predicates = 1
+|  |  Return Data to Application
+|  |  |  #Columns = 1
+Return Data Completion
+
+End of section
 
                            
