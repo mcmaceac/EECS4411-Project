@@ -1,0 +1,47 @@
+
+DB2 Universal Database Version 11.1, 5622-044 (c) Copyright IBM Corp. 1991, 2015
+Licensed Material - Program Property of IBM
+IBM DB2 Universal Database SQL and XQUERY Explain Tool
+
+******************** DYNAMIC ***************************************
+
+==================== STATEMENT ==========================================
+
+        Isolation Level          = Cursor Stability
+        Blocking                 = Block All Cursors
+        Query Optimization Class = 5
+
+        Partition Parallel       = No
+        Intra-Partition Parallel = No
+
+        SQL Path                 = "SYSIBM", "SYSFUN", "SYSPROC", "SYSIBMADM",
+                                   "MJCAR"
+
+
+Statement:
+
+  select cust#
+  from stl.customer
+  where city ='Toronto' and city ='Toronto'
+
+
+Section Code Page = 1208
+
+Estimated Cost = 1074.364258
+Estimated Cardinality = 4400.000000
+
+Access Table Name = STL.CUSTOMER  ID = 2,4
+|  #Columns = 1
+|  Skip Inserted Rows
+|  Avoid Locking Committed Data
+|  Currently Committed for Cursor Stability
+|  May participate in Scan Sharing structures
+|  Scan may start anywhere and wrap, for completion
+|  Fast scan, for purposes of scan sharing management
+|  Scan can be throttled in scan sharing management
+|  Relation Scan
+|  |  Prefetch: Eligible
+|  Lock Intents
+|  |  Table: Intent Share
+
+                           
