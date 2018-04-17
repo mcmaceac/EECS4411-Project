@@ -1,5 +1,5 @@
 select avg(sale)
-  from stl.purchase p, stl.book b
-  where b.book# =p.book# and p.qnty > 5
-  group by genre
-
+  from stl.purchase p, stl.book b, stl.customer c 
+  where b.book# =p.book# and c.cust# =p.cust# and p.when > 
+          '01/01/2003' 
+  group by city, genre
