@@ -1,4 +1,5 @@
-select *
+select avg(sale)
   from stl.purchase p, stl.book b
-  where b.book# = p.book# and p.when between '10/01/2003' and
-          '10/31/2003'
+  where b.book# =p.book# and p.qnty > 5
+  group by genre
+
