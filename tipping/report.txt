@@ -1,3 +1,11 @@
+EECS 4411: Database Management Systems
+Project Report
+April 17, 2018
+
+Partners:
+Matthew MacEachern
+Matthew Cardinal
+
 1.
 In this query, a simple select from the Customer table was used in order to test different access paths for simple queries. In this case, our predicate checked a range of cust# values from the table. In the case of oneB.sql, the entire range of possible cust# values was used as the value of the predicate. In the case of oneA.sql, the range was restricted as to only have one value (cust#=4) satisfying the predicate. When comparing the plan files for both of these queries, we can see that the estimated cardinalities are vastly different because of the values of these predicates. This causes the evaluator to have an index scan as part of the access path for oneA.sql, since we are only looking for a restricted number of values, while the access path for oneB.sql does not contain this index scan. Thus the access paths for the two variants are different.
 
